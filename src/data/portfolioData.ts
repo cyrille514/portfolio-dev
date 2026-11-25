@@ -10,6 +10,13 @@ export interface ProjectItem {
   repoUrl: string;
 }
 
+export interface ProjectMatrixRow {
+  project: string;
+  type: string;
+  stackSummary: string;
+  status: string;
+}
+
 export const portfolioContent: Record<
   Lang,
   {
@@ -23,11 +30,28 @@ export const portfolioContent: Record<
     sections: {
       projectsTitle: string;
       projectsSubtitle: string;
+      matrixTitle: string;
+      matrixHeaders: {
+        project: string;
+        type: string;
+        stack: string;
+        status: string;
+      };
       skillsTitle: string;
       aboutTitle: string;
       aboutText: string;
       contactTitle: string;
       contactText: string;
+    };
+    form: {
+      nameLabel: string;
+      namePlaceholder: string;
+      emailLabel: string;
+      emailPlaceholder: string;
+      messageLabel: string;
+      messagePlaceholder: string;
+      submitButton: string;
+      sentNotice: string;
     };
     labels: {
       liveDemo: string;
@@ -39,6 +63,7 @@ export const portfolioContent: Record<
       items: string[];
     }[];
     projects: ProjectItem[];
+    projectMatrix: ProjectMatrixRow[];
   }
 > = {
   fr: {
@@ -57,14 +82,32 @@ export const portfolioContent: Record<
     },
     sections: {
       projectsTitle: 'Projets sélectionnés',
-      projectsSubtitle: 'Applications fullstack, frontend interactif et intégrations API.',
+      projectsSubtitle: 'Applications fullstack, architecture modulaire et déploiement continu.',
+      matrixTitle: 'Vue d’ensemble technique',
+      matrixHeaders: {
+        project: 'Projet',
+        type: 'Périmètre',
+        stack: 'Stack principale',
+        status: 'État',
+      },
       skillsTitle: 'Compétences techniques',
       aboutTitle: 'À propos',
       aboutText:
         'Développeur web fullstack junior orienté pratique et qualité de code. J’accorde une attention particulière à la séparation modulaire des responsabilités (DRY), à la sécurité des données et au design responsive mobile-first.',
       contactTitle: 'Travaillons ensemble',
       contactText:
-        'Disponible pour un poste de développeur web fullstack junior ou une opportunité technique. Contactez-moi directement par e-mail, GitHub ou LinkedIn.',
+        'Disponible pour un poste de développeur web fullstack junior ou une opportunité technique. Envoyez un message ou utilisez mes liens directs.',
+    },
+    form: {
+      nameLabel: 'Nom',
+      namePlaceholder: 'Votre nom',
+      emailLabel: 'E-mail',
+      emailPlaceholder: 'vous@exemple.com',
+      messageLabel: 'Message',
+      messagePlaceholder: 'Décrivez votre besoin ou opportunité...',
+      submitButton: 'Envoyer le message',
+      sentNotice:
+        'Message prêt dans votre client e-mail. Vous pouvez aussi écrire directement à cyrillenyamitchamba67@gmail.com.',
     },
     labels: {
       liveDemo: 'Démo en ligne',
@@ -102,17 +145,31 @@ export const portfolioContent: Record<
       },
       {
         title: 'Gestion de Naissances — Application Interactive',
-        badge: 'Frontend • React',
+        badge: 'Fullstack • React & Node.js',
         description:
           'Application web responsive dédiée à la gestion et au suivi des enregistrements de naissances, avec recherche instantanée, filtrage et interface claire.',
         highlights: [
           'Gestion d’état dynamique, recherche et filtrage en temps réel avec React',
-          'Architecture par composants modulaires et design mobile-first',
+          'Architecture client/serveur modulaire et design mobile-first',
           'Déploiement continu sur Vercel',
         ],
-        stack: ['React', 'JavaScript (ES6+)', 'Tailwind CSS', 'GitHub', 'Vercel'],
+        stack: ['React', 'Node.js', 'JavaScript (ES6+)', 'Tailwind CSS', 'Vercel'],
         liveUrl: 'https://nacimientos-app-u8ha.vercel.app/',
         repoUrl: 'https://github.com/cyrille514/nacimientos-app',
+      },
+    ],
+    projectMatrix: [
+      {
+        project: 'Tienda Coches',
+        type: 'Fullstack E-commerce',
+        stackSummary: 'Astro SSR, PostgreSQL, Supabase, Stripe, Brevo',
+        status: 'En ligne',
+      },
+      {
+        project: 'Gestion de Naissances',
+        type: 'Fullstack Web App',
+        stackSummary: 'React, Node.js, JavaScript (ES6+), Tailwind CSS',
+        status: 'En ligne',
       },
     ],
   },
@@ -133,14 +190,32 @@ export const portfolioContent: Record<
     },
     sections: {
       projectsTitle: 'Proyectos destacados',
-      projectsSubtitle: 'Aplicaciones fullstack, frontend interactivo e integraciones API.',
+      projectsSubtitle: 'Aplicaciones fullstack, arquitectura modular y despliegue continuo.',
+      matrixTitle: 'Resumen técnico',
+      matrixHeaders: {
+        project: 'Proyecto',
+        type: 'Alcance',
+        stack: 'Stack principal',
+        status: 'Estado',
+      },
       skillsTitle: 'Habilidades técnicas',
       aboutTitle: 'Sobre mí',
       aboutText:
         'Desarrollador web fullstack junior enfocado en la práctica y la calidad del código. Priorizo la arquitectura modular (DRY), la seguridad de los datos y el diseño responsivo mobile-first.',
       contactTitle: 'Trabajemos juntos',
       contactText:
-        'Disponible para posiciones de desarrollador web fullstack junior o proyectos técnicos. Puedes contactarme directamente por correo, GitHub o LinkedIn.',
+        'Disponible para posiciones de desarrollador web fullstack junior o proyectos técnicos. Envía un mensaje o utiliza los enlaces directos.',
+    },
+    form: {
+      nameLabel: 'Nombre',
+      namePlaceholder: 'Tu nombre',
+      emailLabel: 'Correo electrónico',
+      emailPlaceholder: 'tu@ejemplo.com',
+      messageLabel: 'Mensaje',
+      messagePlaceholder: 'Cuéntame sobre el puesto o proyecto...',
+      submitButton: 'Enviar mensaje',
+      sentNotice:
+        'Mensaje preparado en tu gestor de correo. También puedes escribir directamente a cyrillenyamitchamba67@gmail.com.',
     },
     labels: {
       liveDemo: 'Demo en vivo',
@@ -178,17 +253,31 @@ export const portfolioContent: Record<
       },
       {
         title: 'Gestión de Nacimientos — Aplicación Interactiva',
-        badge: 'Frontend • React',
+        badge: 'Fullstack • React & Node.js',
         description:
           'Aplicación web responsiva para la gestión y consulta de registros de nacimientos, con búsqueda rápida, filtros y diseño claro.',
         highlights: [
           'Gestión de estado dinámica, búsqueda y filtrado en tiempo real con React',
-          'Arquitectura por componentes modulares y diseño mobile-first',
+          'Arquitectura cliente/servidor modular y diseño mobile-first',
           'Despliegue continuo en Vercel',
         ],
-        stack: ['React', 'JavaScript (ES6+)', 'Tailwind CSS', 'GitHub', 'Vercel'],
+        stack: ['React', 'Node.js', 'JavaScript (ES6+)', 'Tailwind CSS', 'Vercel'],
         liveUrl: 'https://nacimientos-app-u8ha.vercel.app/',
         repoUrl: 'https://github.com/cyrille514/nacimientos-app',
+      },
+    ],
+    projectMatrix: [
+      {
+        project: 'Tienda Coches',
+        type: 'Fullstack E-commerce',
+        stackSummary: 'Astro SSR, PostgreSQL, Supabase, Stripe, Brevo',
+        status: 'En línea',
+      },
+      {
+        project: 'Gestión de Nacimientos',
+        type: 'Fullstack Web App',
+        stackSummary: 'React, Node.js, JavaScript (ES6+), Tailwind CSS',
+        status: 'En línea',
       },
     ],
   },
